@@ -1,0 +1,19 @@
+{
+  "name": "random-everything-react-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamh85/Random-Everything-React.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamh85/Random-Everything-React/issues"
+  },
+  "homepage": "https://github.com/lamh85/Random-Everything-React#readme"
+}
