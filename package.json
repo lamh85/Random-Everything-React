@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lamh85/Random-Everything-React/issues"
   },
-  "homepage": "https://github.com/lamh85/Random-Everything-React#readme"
+  "homepage": "https://github.com/lamh85/Random-Everything-React#readme",
+  "dependencies": {
+    "react": "^0.14.8"
+  }
 }
