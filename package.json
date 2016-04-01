@@ -18,5 +18,8 @@
   "homepage": "https://github.com/lamh85/Random-Everything-React#readme",
   "dependencies": {
     "react": "^0.14.8"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.14"
   }
 }
