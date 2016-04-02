@@ -1,6 +1,8 @@
 require("./style.css");
 
-console.log(require("./content.js"));
+import Content from './content.js'
+
+console.log(Content);
 
 console.log('making changes...');
 

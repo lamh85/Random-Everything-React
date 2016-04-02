@@ -1,1 +1,1 @@
-module.exports = "hello from content";
+export default "testing ES6";

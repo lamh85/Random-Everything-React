@@ -44,9 +44,17 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _content = __webpack_require__(5);
+
+	var _content2 = _interopRequireDefault(_content);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	__webpack_require__(1);
 
-	console.log(__webpack_require__(5));
+	console.log(_content2.default);
 
 	console.log('making changes...');
 
@@ -406,7 +414,12 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "hello from content";
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = "testing ES6";
 
 /***/ }
 /******/ ]);
