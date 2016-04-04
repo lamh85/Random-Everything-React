@@ -6,6 +6,9 @@ module.exports = {
     path: __dirname,
     filename: "./javascript/bundle.js",
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   module: {
     loaders: [
       { test: /\.css$/, loader: "style!css" },
