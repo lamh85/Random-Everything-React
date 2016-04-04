@@ -1,4 +1,4 @@
-require("./style.css");
+require("../style.css");
 
 import Content from './content.js'
 
