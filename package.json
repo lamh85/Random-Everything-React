@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/lamh85/Random-Everything-React#readme",
   "dependencies": {
-    "react": "^0.14.8"
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

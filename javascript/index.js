@@ -1,3 +1,5 @@
+import {render} from 'react-dom';
+
 require("../style.css");
 
 import Content from './content.js'
@@ -8,4 +10,5 @@ console.log('making changes...');
 
 console.log('making more changes...');
 
-console.log('making more more more changes...');
+
+// react-container
