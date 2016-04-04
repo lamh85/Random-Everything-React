@@ -24,5 +24,8 @@ module.exports = {
     hot: true,
     inline: true,
     progress: true
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }

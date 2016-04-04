@@ -1,4 +1,6 @@
 import {render} from 'react-dom';
+import React from 'react';
+import Application from './components/Application.jsx'
 
 require("../style.css");
 
@@ -10,5 +12,4 @@ console.log('making changes...');
 
 console.log('making more changes...');
 
-
-// react-container
+render(<Application />, document.getElementById('react-container'));
