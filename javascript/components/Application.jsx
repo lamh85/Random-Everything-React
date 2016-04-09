@@ -1,5 +1,6 @@
 import React from 'react';
-import Shape from './Shape'
+import _ from 'lodash';
+import Shape from './Shape';
 
 export default class extends React.Component {
 
