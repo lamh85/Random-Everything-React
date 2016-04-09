@@ -20,6 +20,7 @@
   "homepage": "https://github.com/lamh85/Random-Everything-React#readme",
   "dependencies": {
     "create-keyframe-animation": "^0.1.0",
+    "lodash": "^4.9.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8"
   },
