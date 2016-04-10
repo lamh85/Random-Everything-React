@@ -9,6 +9,17 @@ export default class extends React.Component {
   }
   animate(){
 
+    /*
+      Algorithm:
+      component mounts
+      animation function runs
+        start with the original CSS values
+        transition to the end-CSS values
+          setInterval - For every frame, change all of the CSS values
+            - the goal is 60 frames per second. 1000 milliseconds / 60 frames = 16.666... milliseconds
+
+      parent component unmounts the shape component
+    */
 
 
     console.log('animating!');
