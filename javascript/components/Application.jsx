@@ -10,6 +10,8 @@ export default class extends React.Component {
       // do a thing, possibly async, then…
 
       if (/* everything turned out fine */) {
+        // The "resolve" function returns the value. The Promise object's caller (see below) will retrieve this value using .then()
+        // In this example, "Stuff worked" can be called by .then(function(value){})
         resolve("Stuff worked!");
       }
       else {
@@ -54,6 +56,7 @@ export default class extends React.Component {
           endRotation={makeRandom(360)}
           endWidth={makeRandom(300, 100)}
           endHeight={makeRandom(300, 100)}
+          duration={makeRandom(1,10,1000)}
         />
       </div>
     )
