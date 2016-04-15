@@ -9,7 +9,7 @@ export default class extends React.Component {
     var promise = new Promise(function(resolve, reject) {
       // do a thing, possibly async, then…
 
-      if (/* everything turned out fine */) {
+      if (true) {
         // The "resolve" function returns the value. The Promise object's caller (see below) will retrieve this value using .then()
         // In this example, "Stuff worked" can be called by .then(function(value){})
         resolve("Stuff worked!");
@@ -47,6 +47,15 @@ export default class extends React.Component {
         {JSON.stringify(makeStyle())}
         <Shape
           styleProp={makeStyle()}
+          startColorR={Math.floor(makeRandom(255))}
+          startColorG={Math.floor(makeRandom(255))}
+          startColorB={Math.floor(makeRandom(255))}
+          startTop={makeRandom(100)}
+          startLeft={makeRandom(100)}
+          startOpacity={makeRandom()}
+          startRotation={makeRandom(360)}
+          startWidth={makeRandom(300, 100)}
+          startHeight={makeRandom(300, 100)}
           endColorR={Math.floor(makeRandom(255))}
           endColorG={Math.floor(makeRandom(255))}
           endColorB={Math.floor(makeRandom(255))}

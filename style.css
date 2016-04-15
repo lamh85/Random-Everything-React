@@ -3,6 +3,7 @@
 }
 
 /* The animation code */
+/*
 @keyframes example {
   from {
     left: 0;
@@ -11,10 +12,13 @@
     left: 500;
   }
 }
+*/
 
 /* The element to apply the animation to */
+/*
 .shape {
   background-color: red;
   animation-name: example;
   animation-duration: 4s;
 }
+*/
