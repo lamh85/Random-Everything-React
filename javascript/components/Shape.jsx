@@ -1,92 +1,143 @@
 import React from 'react';
 import _ from 'lodash';
 
-export default class extends React.Component {
+export default React.createClass({
 
   getInitialState(){
     return {
-      style: {}
+      style: {},
+      colorR: "",
+      colorG: "",
+      colorB: "",
+      top: "",
+      left: "",
+      opacity: "",
+      rotation: "",
+      width: "",
+      height: "",
+      timeLapsed: 0,
+      initialValue: "",
+      endValue: "",
+      frames: "",
+      heightInterval: ""
     }
-  }
+  },
 
   componentWillMount(){
-    this.setState({style: this.props.styleProp});
-  }
+  },
 
   componentDidMount(){
-  }
+    this.initiateStyle()
+  },
 
-  timeInterval(){
-    // Divide duration in milliseconds by 16.666... milliseconds.
-    // 16.666... milliseconds is equal to 60 frames per second.
-    return _.round( this.props.duration / (16 + 2/3) )
-  }
-
-  attributeInterval(initialValue, endValue){
-    return (endValue - initialValue) / this.timeInterval();
-  }
-
-  initialStyle(){
-    return {
-      backgroundColor: `rgb(${makeRandom(1,255)}, ${makeRandom(1,255)}, ${makeRandom(1,255)})`,
-      top: `${makeRandom(0,100)}%`,
-      left: `${makeRandom(0,100)}%`,
-      opacity: makeRandom(1,100,0.01),
-      transform: `rotate(${makeRandom(0,360)}deg)`,
-      width: `${makeRandom(300, 100)}px`,
-      height: `${makeRandom(200, 100)}px`
+  componentDidUpdate: function(prevProps, prevState){
+    if (prevState.colorR != this.state.colorR){
+      this.setStyleState();
     }
 
-/*
-          startColorR={Math.floor(makeRandom(255))}
-          startColorG={Math.floor(makeRandom(255))}
-          startColorB={Math.floor(makeRandom(255))}
-          startTop={makeRandom(100)}
-          startLeft={makeRandom(100)}
-          startOpacity={makeRandom()}
-          startRotation={makeRandom(360)}
-          startWidth={makeRandom(300, 100)}
-          startHeight={makeRandom(300, 100)}
-*/
+    if (prevState.style != this.state.style && this.state.timeLapsed < this.props.duration){
+      var newTimeLapsed = this.state.timeLapsed + this.timeInterval();
+      setTimeout(function(){
+        this.setState({timeLapsed: newTimeLapsed});
+      }.bind(this), this.timeInterval() )
+    }
 
-  }
+    if (prevState.timeLapsed != this.state.timeLapsed) {
+      this.incrementStyle();
+    }
+  },
+
+  timeInterval(){
+    // 16.666... milliseconds is equal to 60 frames per second.
+    return 16
+  },
+
+  attributeInterval(initialValue, endValue){
+    this.setState({initialValue: initialValue});
+    this.setState({endValue: endValue});
+    this.setState({frames: (this.props.duration / this.timeInterval())});
+    return (endValue - initialValue) / (this.props.duration / this.timeInterval());
+  },
+
+  initiateStyle(){
+    this.setState({colorR: this.props.startColorR});
+    this.setState({colorG: this.props.startColorG});
+    this.setState({colorB: this.props.startColorB});
+    this.setState({top: this.props.startTop});
+    this.setState({left: this.props.startLeft});
+    this.setState({opacity: this.props.startOpacity});
+    this.setState({rotation: this.props.startRotation});
+    this.setState({width: this.props.startWidth});
+    this.setState({height: this.props.startHeight});
+
+    var realThis = this;
+    setTimeout(() => {
+      this.setStyleState();
+      // this.animate();
+    }, 0);
+    this.setStyleState();
+  },
+
+  setStyleState(){
+    var styleObj = {
+      backgroundColor: `rgb(${this.state.colorR}, ${this.state.colorG}, ${this.state.colorB})`,
+      top: `${this.state.top}%`,
+      left: `${this.state.left}%`,
+      opacity: this.state.opacity,
+      transform: `rotate(${this.state.rotation}deg)`,
+      width: `${this.state.width}px`,
+      height: `${this.state.height}px`
+    }
+    this.setState({style: styleObj});
+  },
+
+  incrementStyle(){
+    var colorRInterval = _.round( this.attributeInterval(this.props.startColorR, this.props.endColorR) )
+    var colorGInterval = _.round( this.attributeInterval(this.props.startColorG, this.props.endColorG) )
+    var colorBInterval = _.round( this.attributeInterval(this.props.startColorB, this.props.endColorB) )
+    var topInterval = _.round( this.attributeInterval(this.props.startTop, this.props.endTop) )
+    var leftInterval = _.round( this.attributeInterval(this.props.startLeft, this.props.endLeft) )
+    var opacityInterval = _.round( this.attributeInterval(this.props.startOpacity, this.props.endOpacity) )
+    var rotationInterval = _.round( this.attributeInterval(this.props.startRotation, this.props.endRotation) )
+    var widthInterval = _.round( this.attributeInterval(this.props.startWidth, this.props.endWidth) )
+    var heightInterval = _.round( this.attributeInterval(this.props.startHeight, this.props.endHeight) )
+    this.setState({heightInterval: heightInterval});
+
+    this.setState({colorR: _.round(this.state.colorR + colorRInterval) });
+    this.setState({colorG: _.round(this.state.colorG + colorGInterval) });
+    this.setState({colorB: _.round(this.state.colorB + colorBInterval) });
+    this.setState({top: this.state.top + topInterval});
+    this.setState({left: this.state.left + leftInterval});
+    this.setState({opacity: this.state.opacity + opacityInterval});
+    this.setState({rotation: this.state.rotation + rotationInterval});
+    this.setState({width: this.state.width + widthInterval});
+    this.setState({height: this.state.height + heightInterval});
+
+    // setTimeout(() => {this.setStyleState()}, 0);
+  },
 
   animate(){
-    var colorRInterval = _.round( this.attributeInterval() )
+    var currentTime = 0;
+    while (currentTime < this.props.duration) {
+      // setTimeout(() => {this.incrementStyle()}, 0);
+      currentTime += this.timeInterval();
+    }
+  },
 
-/*
-          endColorR={Math.floor(makeRandom(255))}
-          endColorG={Math.floor(makeRandom(255))}
-          endColorB={Math.floor(makeRandom(255))}
-          endTop={makeRandom(100)}
-          endLeft={makeRandom(100)}
-          endOpacity={makeRandom()}
-          endRotation={makeRandom(360)}
-          endWidth={makeRandom(300, 100)}
-          endHeight={makeRandom(300, 100)}
-          duration={makeRandom(1,10,1000)}
-*/
-
-
-    /*
-      Algorithm:
-      component mounts
-      animation function runs
-        start with the original CSS values
-        transition to the end-CSS values
-          setInterval - For every frame, change all of the CSS values
-            - the goal is 60 frames per second. 1000 milliseconds / 60 frames = 16.666... milliseconds
-
-      parent component unmounts the shape component
-    */
-
-    console.log('animating!');
-    console.log(this.refs.shape.style);
-  }
-  render(){
+  render: function(){
     return (
-      <div style={this.state.style} className="shape">
+      <div>
+        Initial height: {this.props.startColorR}
+        <br/>initialValue: {this.state.initialValue}
+        <br/>endValue: {this.state.endValue}
+        <br/>frames: {this.state.frames}
+        <br/>height interval: {this.state.heightInterval}
+
+        <br/>Style: {JSON.stringify(this.state.style)}
+        <br/>Duration: {this.props.duration}
+        <div style={this.state.style} className="shape">
+        </div>
       </div>
     )
   }
-}
+})
