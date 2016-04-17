@@ -26,8 +26,31 @@ export default class extends React.Component {
     });
   }
 
+  makeRandom(floor = 0, ceiling = 0, multiplier = 1){
+    return _.random(floor, ceiling) * multiplier
+  }
+
+  makeRandom255(){
+    return this.makeRandom(0, 255);
+  }
+
+  makeRandom100(){
+    return this.makeRandom(0, 100);
+  }
+
+  createStyle(){
+    return {
+      backgroundColor: `rgb(${this.makeRandom255()}, ${this.makeRandom255()}, ${this.makeRandom255()})`,
+      top: `${this.makeRandom100()}%`,
+      left: `${this.makeRandom100()}%`,
+      opacity: this.makeRandom(40, 100, 0.01),
+      transform: `rotate(${this.makeRandom(0, 360)}deg)`,
+      width: `${this.makeRandom(100, 400)}px`,
+      height: `${this.makeRandom(100, 300)}px`
+    }
+  }
+
   render(){
-    const makeRandom = (floor = 0, ceiling = 0, multiplier = 1) => _.random(floor, ceiling) * multiplier;
 
     return (
       <div>
@@ -35,26 +58,9 @@ export default class extends React.Component {
           [1, 2].map((element, index) => {
             return (
               <Shape
-                startColorR={Math.floor(makeRandom(255))}
-                startColorG={Math.floor(makeRandom(255))}
-                startColorB={Math.floor(makeRandom(255))}
-                startTop={makeRandom(100)}
-                startLeft={makeRandom(100)}
-                startOpacity={makeRandom(40, 100, 0.01)}
-                startRotation={makeRandom(360)}
-                startWidth={makeRandom(300, 100)}
-                startHeight={makeRandom(300, 100)}
-                endColorR={Math.floor(makeRandom(255))}
-                endColorG={Math.floor(makeRandom(255))}
-                endColorB={Math.floor(makeRandom(255))}
-                endTop={makeRandom(100)}
-                endLeft={makeRandom(100)}
-                endOpacity={makeRandom()}
-                endRotation={makeRandom(360)}
-                endWidth={makeRandom(300, 100)}
-                endHeight={makeRandom(300, 100)}
-                duration={makeRandom(1,5,1000)}
-                key={index}
+                startStyle={this.createStyle()}
+                endStyle={this.createStyle()}
+                duration={this.makeRandom(2, 5, 1000)}
               />
             )
           })
