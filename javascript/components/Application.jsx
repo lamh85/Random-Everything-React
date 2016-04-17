@@ -51,20 +51,14 @@ export default class extends React.Component {
   }
 
   render(){
+        // <Shape
+          // startWidth={this.makeRandom(200, 500)}
+          // endWidth={this.makeRandom(200, 500)}
+          // duration={this.makeRandom(3, 5, 1000)}
+        // />
 
     return (
       <div>
-        {
-          [1, 2].map((element, index) => {
-            return (
-              <Shape
-                startStyle={this.createStyle()}
-                endStyle={this.createStyle()}
-                duration={this.makeRandom(2, 5, 1000)}
-              />
-            )
-          })
-        }
       </div>
     )
   }
