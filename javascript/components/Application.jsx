@@ -3,6 +3,12 @@ import _ from 'lodash';
 import Shape from './Shape';
 
 export default class extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      shapeStyles = [];
+    }
+  }
 
   componentWillMount(){
     // http://www.html5rocks.com/en/tutorials/es6/promises/
@@ -25,6 +31,8 @@ export default class extends React.Component {
       console.log(err); // Error: "It broke"
     });
   }
+
+
 
   makeRandom(floor = 0, ceiling = 0, multiplier = 1){
     return _.random(floor, ceiling) * multiplier
@@ -51,14 +59,14 @@ export default class extends React.Component {
   }
 
   render(){
-        // <Shape
-          // startWidth={this.makeRandom(200, 500)}
-          // endWidth={this.makeRandom(200, 500)}
-          // duration={this.makeRandom(3, 5, 1000)}
-        // />
 
     return (
       <div>
+        <Shape
+          startWidth={this.makeRandom(200, 500)}
+          endWidth={this.makeRandom(200, 500)}
+          duration={this.makeRandom(3, 5, 1000)}
+        />
       </div>
     )
   }

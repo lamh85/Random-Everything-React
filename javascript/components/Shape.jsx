@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-const FRAME_DURATION = 20;
+const FRAME_DURATION = 100;
 
 export default React.createClass({
 
@@ -28,22 +28,35 @@ export default React.createClass({
   },
 
   runAnimation: function(){
-    while (this.state.step < this.numberOfSteps()) {
-      setTimeout( () => {
-        var newStyle = this.state.style;
-        var newWidth = this.props.startWidth + (this.widthDifference() / this.numberOfSteps() * this.state.step);
-        newStyle.width = newWidth;
-        this.setState({style: newStyle});
-        var newStep = this.state.step + 1;
-        this.setState({step: newStep});
-      }, FRAME_DURATION);
+    var newStyle = this.state.style;
+
+    if (this.state.step == 0) {
+      newStyle.width = this.props.startWidth;
+    } else if (this.state.step == this.numberOfSteps()) {
+      newStyle.width = this.props.endWidth;
+    } else {
+      var newWidth = this.props.startWidth + (this.widthDifference() / this.numberOfSteps() * this.state.step);
+      var newWidth = _.round(newWidth);
+      newStyle.width = newWidth;
+    }
+
+    this.setState({style: newStyle});
+
+    var newStep = this.state.step + 1;
+    this.setState({step: newStep});
+
+    if (this.state.step < this.numberOfSteps() + 1) {
+      setTimeout(this.runAnimation, FRAME_DURATION);
     }
   },
 
   render: function(){
     return (
       <div style={this.state.style}>
-        Current width: {this.state.style.width}
+        Start width: {this.props.startWidth}
+        <br/>End width: {this.props.endWidth}
+        <br/>Current width: {this.state.style.width}
+        <br/>Duration: {this.props.duration}
       </div>
     )
   }
