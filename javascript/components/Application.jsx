@@ -32,7 +32,9 @@ export default class extends React.Component {
     });
   }
 
-
+  stylePusher(){
+    var newStyle = this.styleFactory();
+  }
 
   makeRandom(floor = 0, ceiling = 0, multiplier = 1){
     return _.random(floor, ceiling) * multiplier
@@ -46,7 +48,7 @@ export default class extends React.Component {
     return this.makeRandom(0, 100);
   }
 
-  createStyle(){
+  styleFactory(){
     return {
       backgroundColor: `rgb(${this.makeRandom255()}, ${this.makeRandom255()}, ${this.makeRandom255()})`,
       top: `${this.makeRandom100()}%`,
