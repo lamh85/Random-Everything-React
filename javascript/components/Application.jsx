@@ -2,11 +2,12 @@ import React from 'react';
 import _ from 'lodash';
 import Shape from './Shape';
 
-export default class extends React.Component {
+class Application extends React.Component {
+
   constructor(props){
     super(props);
     this.state = {
-      shapeStyles = [];
+      shapeStyles: []
     }
   }
 
@@ -73,3 +74,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default Application
