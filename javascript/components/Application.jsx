@@ -35,6 +35,10 @@ class Application extends React.Component {
 
   stylePusher(){
     var newStyle = this.styleFactory();
+    setInterval(
+      () =>{},
+      2000
+    );
   }
 
   makeRandom(floor = 0, ceiling = 0, multiplier = 1){
