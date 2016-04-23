@@ -12,33 +12,16 @@ class Application extends React.Component {
   }
 
   componentWillMount(){
-    // http://www.html5rocks.com/en/tutorials/es6/promises/
-    var promise = new Promise(function(resolve, reject) {
-      // do a thing, possibly async, then…
-
-      if (true) {
-        // The "resolve" function returns the value. The Promise object's caller (see below) will retrieve this value using .then()
-        // In this example, "Stuff worked" can be called by .then(function(value){})
-        resolve("Stuff worked!");
-      }
-      else {
-        reject(Error("It broke"));
-      }
-    });
-
-    promise.then(function(result) {
-      console.log(result); // "Stuff worked!"
-    }, function(err) {
-      console.log(err); // Error: "It broke"
-    });
+    this.stylePusher();
   }
 
   stylePusher(){
-    var newStyle = this.styleFactory();
-    setInterval(
-      () =>{},
-      2000
-    );
+    setInterval(() =>{
+      var shapesArray = this.state.shapeStyles;
+      var newStyle = this.styleFactory();
+      shapesArray.push(newStyle);
+      this.setState({shapeStyles: shapesArray});
+    }, 250);
   }
 
   makeRandom(floor = 0, ceiling = 0, multiplier = 1){
@@ -61,7 +44,8 @@ class Application extends React.Component {
       opacity: this.makeRandom(40, 100, 0.01),
       transform: `rotate(${this.makeRandom(0, 360)}deg)`,
       width: `${this.makeRandom(100, 400)}px`,
-      height: `${this.makeRandom(100, 300)}px`
+      height: `${this.makeRandom(100, 300)}px`,
+      position: "absolute"
     }
   }
 
@@ -69,11 +53,7 @@ class Application extends React.Component {
 
     return (
       <div>
-        <Shape
-          startWidth={this.makeRandom(200, 500)}
-          endWidth={this.makeRandom(200, 500)}
-          duration={this.makeRandom(3, 5, 1000)}
-        />
+        {this.state.shapeStyles.map((style, elementIndex)=> <div style={style} key={elementIndex}></div>)}
       </div>
     )
   }
