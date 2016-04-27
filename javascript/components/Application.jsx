@@ -58,9 +58,9 @@ class Application extends React.Component {
       styleObject.top = this.currentFrameAttribute("top", index, currentFrame, false) + "%";
       styleObject.left = this.currentFrameAttribute("left", index, currentFrame, false) + "%";
       styleObject.opacity = this.currentFrameAttribute("opacity", index, currentFrame, false);
-      styleObject.transform = "roate("+ this.currentFrameAttribute("") +"deg)";
-      // transform: `rotate(${this.makeRandom(0, 360)}deg)`,
+      styleObject.transform = "rotate("+ this.currentFrameAttribute("") +"deg)";
       styleObject.width = this.currentFrameAttribute("width", index, currentFrame) + "px";
+      styleObject.height = this.currentFrameAttribute("height", index, currentFrame) + "px";
       // keys.map(cssProp => )
       // return style object
     });
