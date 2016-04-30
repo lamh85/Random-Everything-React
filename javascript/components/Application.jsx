@@ -62,6 +62,7 @@ class Application extends React.Component {
       styleObject.transform = "rotate("+ this.currentFrameAttribute("") +"deg)";
       styleObject.width = this.currentFrameAttribute("width", index, currentFrame) + "px";
       styleObject.height = this.currentFrameAttribute("height", index, currentFrame) + "px";
+      styleObject.borderRadius = this.currentFrameAttribute("borderRadius", index, currentFrame) +"%";
             // borderRadius: `${this.makeRandom(0, 50)}%`,
       // keys.map(cssProp => )
 
