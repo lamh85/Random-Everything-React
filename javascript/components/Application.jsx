@@ -49,7 +49,7 @@ class Application extends React.Component {
     var currentStyles = this.state.currentStyles;
     var newCurrentStyles = [];
     // Loop through array of styles, and push each object to the array
-    currentStyles.map((style, index) => {
+    var newCurrentStyles = currentStyles.map((style, index) => {
       // var keys = _.keys(style).map(element => element != "backgroundColor");
       var styleObject = {};
       var currentFrame = style.currentFrame;
@@ -63,7 +63,6 @@ class Application extends React.Component {
       styleObject.width = this.currentFrameAttribute("width", index, currentFrame) + "px";
       styleObject.height = this.currentFrameAttribute("height", index, currentFrame) + "px";
       styleObject.borderRadius = this.currentFrameAttribute("borderRadius", index, currentFrame) +"%";
-            // borderRadius: `${this.makeRandom(0, 50)}%`,
       // keys.map(cssProp => )
 
       // return style object
