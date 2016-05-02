@@ -46,10 +46,8 @@ class Application extends React.Component {
   }
 
   styleChanger(){
-    var currentStyles = this.state.currentStyles;
-    var newCurrentStyles = [];
     // Loop through array of styles, and push each object to the array
-    var newCurrentStyles = currentStyles.map((style, index) => {
+    var newCurrentStyles = this.state.currentStyles.map((style, index) => {
       // var keys = _.keys(style).map(element => element != "backgroundColor");
       var styleObject = {};
       var currentFrame = style.currentFrame;
