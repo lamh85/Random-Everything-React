@@ -16,33 +16,27 @@ class Application extends React.Component {
   }
 
   componentWillMount(){
-    this.stylePusher();
+    this.incrementer();
   }
 
   stylePusher(){
-    /*
-    */
-    setInterval(() =>{
-      var startStyles = this.state.startStyles;
-      var newStartStyle = this.styleFactory();
-      startStyles.push(newStartStyle);
-      this.setState({startStyles: startStyles});
+    var startStyles = this.state.startStyles;
+    var newStartStyle = this.styleFactory();
+    startStyles.push(newStartStyle);
+    this.setState({startStyles: startStyles});
 
-      var currentStyles = this.state.currentStyles;
-      var newCurrentStyle = this.styleFactory();
-      newCurrentStyle.currentTime = 0;
-      newCurrentStyle.currentFrame = 0;
-      currentStyles.push(newCurrentStyle);
-      this.setState({currentStyles: currentStyles});
+    var currentStyles = this.state.currentStyles;
+    var newCurrentStyle = this.styleFactory();
+    newCurrentStyle.currentTime = 0;
+    newCurrentStyle.currentFrame = 0;
+    currentStyles.push(newCurrentStyle);
+    this.setState({currentStyles: currentStyles});
 
-      var endStyles = this.state.endStyles;
-      var newEndStyle = this.styleFactory();
-      newEndStyle.duration = this.makeRandom(3, 5, 1000);
-      endStyles.push(newEndStyle);
-      this.setState({endStyles: endStyles});
-    }, 250);
-      /*
-    */
+    var endStyles = this.state.endStyles;
+    var newEndStyle = this.styleFactory();
+    newEndStyle.duration = this.makeRandom(3, 5, 1000);
+    endStyles.push(newEndStyle);
+    this.setState({endStyles: endStyles});
   }
 
   styleChanger(){
@@ -65,6 +59,13 @@ class Application extends React.Component {
 
       // return style object
     });
+  }
+
+  incrementer(){
+    setInterval(()=>{
+      // this.stylePusher();
+      // this.styleChanger();
+    }, 250);
   }
 
   currentFrameAttribute(attribute, arrayIndex, currentFrame, round = true){
