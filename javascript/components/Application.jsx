@@ -63,9 +63,9 @@ class Application extends React.Component {
 
   incrementer(){
     setInterval(()=>{
-      // this.stylePusher();
-      // this.styleChanger();
-    }, 250);
+      this.stylePusher();
+      this.styleChanger();
+    }, 500);
   }
 
   currentFrameAttribute(attribute, arrayIndex, currentFrame, round = true){
