@@ -42,7 +42,6 @@ class Application extends React.Component {
   styleChanger(){
     // Loop through array of styles, and push each object to the array
     var newCurrentStyles = this.state.currentStyles.map((style, index) => {
-      // var keys = _.keys(style).map(element => element != "backgroundColor");
       var styleObject = {};
       var currentFrame = style.currentFrame;
       styleObject.red = this.currentFrameAttribute("red", index, currentFrame);
@@ -55,9 +54,6 @@ class Application extends React.Component {
       styleObject.width = this.currentFrameAttribute("width", index, currentFrame) + "px";
       styleObject.height = this.currentFrameAttribute("height", index, currentFrame) + "px";
       styleObject.borderRadius = this.currentFrameAttribute("borderRadius", index, currentFrame) +"%";
-      // keys.map(cssProp => )
-
-      // return style object
     });
   }
 
