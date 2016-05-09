@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import Shape from './Shape';
+import update from 'react-addons-update';
 
 const DURATION_PER_FRAME = 100;
 
@@ -11,12 +12,16 @@ class Application extends React.Component {
     this.state = {
       startStyles: [],
       currentStyles: [],
-      endStyles: []
+      endStyles: [],
+      myObject: {
+        foo: "bar",
+        kids: ["Stan", "Kyle", "Cartman", "Kenny"]
+      }
     }
   }
 
   componentWillMount(){
-    this.incrementer();
+    // this.incrementer();
   }
 
   stylePusher(){
@@ -111,10 +116,24 @@ class Application extends React.Component {
     }
   }
 
+  myUpdate(){
+    console.log('updating')
+
+    var newObject = this.state.myObject
+    newObject = update(newObject, {kids:
+      {$push: ["Clyde"]}
+    });
+    console.log(newObject);
+    this.setState({myObject: newObject});
+  }
+
   render(){
 
     return (
       <div>
+        {JSON.stringify(this.state.myObject)}
+        <br/>
+        <button onClick={() => this.myUpdate()} >UPDATE</button>
         {this.state.currentStyles.map((style, elementIndex)=> <div style={style} key={elementIndex}></div>)}
       </div>
     )
