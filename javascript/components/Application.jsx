@@ -8,6 +8,7 @@ const DURATION_PER_FRAME = 100;
 class Application extends React.Component {
 
   constructor(props){
+    // super() calls the constructor() of the parent class
     super(props);
     this.state = {
       startStyles: [],
