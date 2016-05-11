@@ -17,7 +17,8 @@ class Application extends React.Component {
       myObject: {
         foo: "bar",
         kids: ["Stan", "Kyle", "Cartman", "Kenny"]
-      }
+      },
+      myResult: ""
     }
   }
 
@@ -136,6 +137,8 @@ class Application extends React.Component {
         <br/>
         <button onClick={() => this.myUpdate()} >UPDATE</button>
         {this.state.currentStyles.map((style, elementIndex)=> <div style={style} key={elementIndex}></div>)}
+        <p>
+        {JSON.stringify(this.state.myResult)}
       </div>
     )
   }
