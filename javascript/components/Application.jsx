@@ -28,7 +28,7 @@ class Application extends React.Component {
   }
 
   es7(){
-
+    let cubed = x => x ** 3;
   }
 
   stylePusher(){
