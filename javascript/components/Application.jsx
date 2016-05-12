@@ -24,6 +24,11 @@ class Application extends React.Component {
 
   componentWillMount(){
     // this.incrementer();
+    es7()
+  }
+
+  es7(){
+
   }
 
   stylePusher(){
