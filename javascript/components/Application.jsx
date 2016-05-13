@@ -24,11 +24,12 @@ class Application extends React.Component {
 
   componentWillMount(){
     // this.incrementer();
-    es7()
+    es7();
   }
 
   es7(){
-    let cubed = x => x ** 3;
+    var x = 3 ** 3;
+    this.setState({myResult: x});
   }
 
   stylePusher(){
